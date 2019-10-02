@@ -62,7 +62,7 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
     {
         $app_secret = "dd9bca9e5139f81928972968dbcf5fb3";
         $app_public = "312024849629673";
-        $accessToken = "EAAEbyPJSwekBAACwDez0Ij76pqwFM8k5VqdY8jpVB1QKunWxiaHVEJ8n2mHsn2yDT1RFe2ZAawuWrIrX8W3SlbqsWGLyfDlkUJWNcyBZB0GfPGmL65f9qu1TVrPZBvbh2O45Ivw9M5CuFrq6U2j3HZBqUc6AJSbDViN5ucsc19nR7uZCJZAzgw0zoLkBxGwxkenJxZCUw11bAwLMQJEG42k";
+        $accessToken = "EAAEbyPJSwekBAJDLjbiMnMqeEJYgZCK1bcfwkumGCvCIHQiSYru3Abdu1QQ3pZCyyvujynAVWO0ecMfixylbYT1NiOq3F8CFC4upxDOnY1tpQky2AqZBkaoV2kZA6eFQCfFIHFfSl7yznvfRPLZCW3EPQvKy3dyYJkMk8OOcZAZBhZCncGDfbFWcdcShijNbCILuM26TsF6mCgZDZD";
         // Getting all the post of the page
         $token = 'Sport Now';
         $idPage = $data->entry[0]->id;
@@ -109,11 +109,11 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         // response to user
         // get reply from post (database)
         $reply = getResponse($post_id);
-        if($reply)
+
+        $message_reply = "An Error Sending Message ";
+        if($reply!=null)
         {
-            $message_reply = $reply->response_message;
-        }else{
-            $message_reply = "An Error Sending Message ".$reply;
+            $message_reply = $reply["response_message"];
         }
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_POST, 1);
