@@ -1,15 +1,17 @@
 <?php
 
 
-function getResponse($post_id)
+function getResponseType($post_id,$user_id)
 {
-    $image = '<img src="https://spyzie.club/app/facebook/image/spyzie.jpg" />';
+
+
+
     $response = array(
         array(
             "id"=> 1,
             "id_post"=> "116300146423467_118189982901150",
             "response_objet"=> "",
-            "response_message"=>   "Hey, You Choose Best Football Team Ever And The Image ".$image,
+            "response_message"=> $jsonData_image ,
             "attachement" => array(
                 "title" => "title",
                 "url" => "",
@@ -119,109 +121,5 @@ function getResponse($post_id)
 
     return $reply;
 }
-function defineTypeResponse($type)
-{
-    global $connection;
-    $query = "SELECT * From attachement WHERE type = '$type'";
-    $query_con = mysqli_query($connection,$query);
-    if(!$query_con)
-    {
-        die("Query Failed ".mysqli_error($connection));
-    }
-    return $query_con;
-}
 
-function getResponseImage($post,$type)
-{
-    global $connection;
-    // Get Response For Image Type
-    $response_type = mysqli_fetch_array(defineTypeResponse($type));
-    $type_response  = $response_type["type"];
-    $response_id = $response_type["response_id"];
-    $payload_id = $response_type["payload_id"];
-    $attachment_id = $response_type["attachement_id"];
-    // Getting recepient Id
-    $query = "SELECT * FROM response WHERE id = '$response_id'";
-    $query_con = mysqli_query($connection,$query);
-    if(!$query_con)
-    {
-        die("Query Failed ".mysqli_error($connection));
-    }
-    $result_response = mysqli_fetch_array($query_con);
-    $recepient_id = $result_response["recipient_id"];
 
-    if($response_type["type"] == 'image')
-    {
-
-        // Payload url
-        $query2 ="SELECT * FROM payload WHERE attachment_id = '$attachment_id'";
-        $query_con2 = mysqli_query($connection,$query2);
-        if(!$query_con2)
-        {
-            die("Query Failed ".mysqli_error($connection));
-        }
-
-        $result_attachement = mysqli_fetch_array($query_con2);
-        $url = $result_attachement["url"];
-        $is_reusable = $result_attachement["is_reusable"];
-
-        // Sending Response
-        $jsonData_image = "{
-        'recipient': {
-            'id': $recepient_id
-        },
-        'message': {
-            'attachment': {
-                'type' : $type_response,
-                'payload': {
-                     'url': $url,
-                     'is_reusable': $is_reusable
-                }
-            }
-        }
-       }";
-        $response = array(
-            "id"=> $response_id,
-            "id_post"=> $post,
-            "response_objet"=> "",
-            "response_message"=> $jsonData_image ,
-            "attachement" => array(
-                "title" => "title",
-                "url" => "",
-                "type" => "",
-                "payload" => "null"
-            ),
-            "response_url"=>   ""
-        );
-    }elseif ($response_type["type"] == 'text')
-    {
-        // Sending Response
-        $jsonData_image = "{
-        'recipient': {
-            'id': $recepient_id
-        },
-        'message': {
-            'attachment': {
-                'text' : 'hello',
-            }
-        }
-       }";
-
-        $response = array(
-            "id"=> $response_id,
-            "id_post"=> $post,
-            "response_objet"=> "",
-            "response_message"=> $jsonData_image ,
-            "attachement" => array(
-                "title" => "title",
-                "url" => "",
-                "type" => "",
-                "payload" => "null"
-            ),
-            "response_url"=>   ""
-        );
-    }
-
-    return $response;
-
-}

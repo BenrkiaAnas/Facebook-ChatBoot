@@ -14,12 +14,9 @@ class User
     public function __construct()
     {
         $user_id = $this->user_id;
-        $email = $this->email;
         $first_name = $this->first_name;
         $last_name = $this->last_name;
-        $gender = $this->gender;
-        $adresse = $this->adresse;
-        $picture = $this->picture;
+
     }
     // Get User_Id
     public function __getUser_Id()

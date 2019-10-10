@@ -1,15 +1,14 @@
 <?php
-define("DB_HOST" , "localhost");
-define("DB_USER" , "root");
-define("DB_PASS" , "");
-define("DB_DATA" , "spyzie");
-/*
-// DataBase Connextion
-$connection = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_DATA);
+define("HOST","localhost");
+define("USERNAME","root");
+define("PASSWORD","");
+define("DB","spyzie_back");
+
+
+$connection = mysqli_connect(HOST,USERNAME,PASSWORD,DB);
+
 if(!$connection)
 {
-    die("Connextion To DataBase is Failed ". mysqli_error());
-}else{
-    echo "Connextion succed";
+    die("Query Failed ".mysqli_error($connection));
 }
-*/
+

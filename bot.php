@@ -47,12 +47,14 @@ require_once("elements/getComment.php");
 require_once("elements/getPost.php");
 require_once("elements/getUsers.php");
 require_once("elements/getResponse.php");
+require_once("elements/getResponseType.php");
 
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token'])) {
     if ($_GET['hub_verify_token'] == 'Sport Now')
         echo $_GET['hub_challenge'];
 
 }else {
+    global $user;
     $feedData = file_get_contents('php://input');
     $data = json_decode($feedData);
     $handle = fopen("test.txt",'w');
@@ -62,11 +64,12 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
     {
         $app_secret = "dd9bca9e5139f81928972968dbcf5fb3";
         $app_public = "312024849629673";
-        $accessToken = "EAAEbyPJSwekBAJDLjbiMnMqeEJYgZCK1bcfwkumGCvCIHQiSYru3Abdu1QQ3pZCyyvujynAVWO0ecMfixylbYT1NiOq3F8CFC4upxDOnY1tpQky2AqZBkaoV2kZA6eFQCfFIHFfSl7yznvfRPLZCW3EPQvKy3dyYJkMk8OOcZAZBhZCncGDfbFWcdcShijNbCILuM26TsF6mCgZDZD";
+        $accessToken = "EAAEbyPJSwekBACYRT3rhScBcIw5fK1TsqguPEIIs9JonooZA4gvHwaG2hZCmGKPaN7zymuxEd7ra0Xos7AxN5Y0f9g04gLX1HCPoUZBLTGBIjV0wSQCj1h9ambiAIrj5MiI9ZCDmLVocut1R9ZBqCkvahkqFPxUWkZBGZBmyGX4DUTf8uOAZChtVRDnRNLFSq1YZD";
         // Getting all the post of the page
         $token = 'Sport Now';
         $idPage = $data->entry[0]->id;
         $post_id = $data->entry[0]->changes[0]->value->post_id; // Getting The Post Id
+        $user_id = $data->entry[0]->changes[0]->value->from->id; // Getting The User Id
 
 
         // Get Post Object Data
@@ -94,10 +97,10 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
 
 
         // Get User Object Data
-        $user_data = getUsers($comment->__getUser_Id(),$accessToken);
+        $user_data = getUsers($user_id,$accessToken);
         // Get User Picture Profile Object Data
         $user_picture = getUsersPictureProfile($comment->__getUser_Id(),$accessToken);
-        $user = createUsers($user_data,$comment->__getUser_Id());
+        $user = createUsers($user_data,$user_id);
 
         $user_data_all = "User_id : {$user->__getUser_Id()} and First_name : {$user->__getFirst_Name()} and Last_name : {$user->__getLast_Name()} and  user_picture : {$user->__getPicture()}";
         $handle_data_post = fopen("user.txt",'w');
@@ -115,6 +118,22 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         {
             $message_reply = $reply["response_message"];
         }
+        // Sending Image
+        /* $url = "https://graph.facebook.com/v4.0/me/messages?access_token=$accessToken";
+         $reply = getResponseType($post_id,$comment->__getUser_Id());
+         $data_file = $reply["response_message"];
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_file);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_URL, "https://graph.facebook.com/v4.0/$commentID/private_replies");
+        curl_exec($ch);
+        curl_close($ch);*/
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);

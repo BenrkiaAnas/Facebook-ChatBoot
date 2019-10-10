@@ -1,5 +1,7 @@
 <?php
-require_once("./class/User.php");
+//require_once("./class/User.php");
+//require_once("./include/db.php");
+
 
 function getUsers($user_id,$accessToken)
 {
@@ -36,3 +38,71 @@ function createUsers($user_data,$user_comment)
 
     return $user;
 }
+function findAllUsers()
+{
+    global $connection;
+    $query = "SELECT * FROM users";
+    $query_con = mysqli_query($connection,$query);
+    if(!$query_con)
+    {
+        die("Query Failed ".mysqli_error($connection));
+    }else{
+        return $query_con;
+    }
+}
+function findByUserId($id)
+{
+    global $connection;
+    $query = "SELECT * FROM users WHERE user_id = $id ";
+    $query_con = mysqli_query($connection,$query);
+    if(!$query_con)
+    {
+        die("Query Failed ".mysqli_error($connection));
+    }else{
+        return $query_con;
+    }
+}
+function insertUser($user)
+{
+    global $connection;
+    // Insert Into Database
+    // Inserting Only Users Not Existing In Database
+    $user_query = findByUserId($user->__getUser_Id());
+    $count = mysqli_num_rows($user_query);
+    if($count == 0)
+    {
+        $query2 = "INSERT INTO users (user_id,first_name,last_name) VALUES('{$user->__getUser_Id()}','{$user->__getFirst_Name()}','{$user->__getLast_Name()}')";
+        $query_con2 = mysqli_query($connection,$query2);
+        if(!$query_con2)
+        {
+            die("Query Failed ".mysqli_error($connection));
+        }else{
+            echo "Users Created Successfully";
+        }
+    }
+}
+
+function updateUser($user)
+{
+    global $connection;
+    // Check If The User Exist In Database
+    $user_query = findByUserId($user->__getUser_Id());
+    $count = mysqli_num_rows($user_query);
+    if($count > 0)
+    {
+        $user_first_name = $user->__getFirst_Name();
+        $user_last_name = $user->__getLast_Name();
+        $query2 = "UPDATE users SET first_name = '{$user_first_name}',last_name = '{$user_last_name}' WHERE user_id = '{$user->__getUser_Id()}'";
+        $query_con2 = mysqli_query($connection,$query2);
+        if(!$query_con2)
+        {
+            die("Query Failed ".mysqli_error($connection));
+        }else{
+            echo "User Updated Successfully";
+        }
+    }else{
+        insertUser($user);
+    }
+}
+
+
