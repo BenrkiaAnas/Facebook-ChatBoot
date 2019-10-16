@@ -48,6 +48,14 @@ require_once("elements/getPost.php");
 require_once("elements/getUsers.php");
 require_once("elements/getResponse.php");
 require_once("elements/getResponseType.php");
+require_once("pages/autopost.php");
+
+
+// Global Parameters
+$app_secret = "dd9bca9e5139f81928972968dbcf5fb3";
+$app_public = "312024849629673";
+$accessToken = "EAAEbyPJSwekBAB6Gx7DhZBNnm7FVUclJkaCCk0CZCSWHaKCnIUi9DpnQz17ixC50WrlixWqu35wCIPZBvr79A5KzGVViAjoKybtzIZBmTFOAK7oZAl007Aosbeb6lq49h4mvzaRfXZCotgQ46xNuR5tbJZCTyUQPxGZAJ5kPNaPb8ebw8Jdi7ZBJIlvwHGchEZB3YZD";
+
 
 if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hub_verify_token'])) {
     if ($_GET['hub_verify_token'] == 'Sport Now')
@@ -62,9 +70,6 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
     fclose($handle);
     if ($data->object == "page")
     {
-        $app_secret = "dd9bca9e5139f81928972968dbcf5fb3";
-        $app_public = "312024849629673";
-        $accessToken = "EAAEbyPJSwekBACYRT3rhScBcIw5fK1TsqguPEIIs9JonooZA4gvHwaG2hZCmGKPaN7zymuxEd7ra0Xos7AxN5Y0f9g04gLX1HCPoUZBLTGBIjV0wSQCj1h9ambiAIrj5MiI9ZCDmLVocut1R9ZBqCkvahkqFPxUWkZBGZBmyGX4DUTf8uOAZChtVRDnRNLFSq1YZD";
         // Getting all the post of the page
         $token = 'Sport Now';
         $idPage = $data->entry[0]->id;
@@ -81,6 +86,10 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         fwrite($handle_data_post,$post_data);
         fclose($handle_data_post);
 
+        // SAVE Post In Database
+        $post_saved = insertPost($post);
+
+
 
         // Get Comment object  by comment_id
         $commentID = $data->entry[0]->changes[0]->value->comment_id; // Getting comment_id
@@ -93,6 +102,9 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         $handle_data_comment = fopen("comment.txt",'w');
         fwrite($handle_data_comment,$comment_data);
         fclose($handle_data_comment);
+
+        // Insert Comment In Database
+        $comment_inserted = insertComment($comment);
 
 
 
@@ -108,6 +120,10 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         fclose($handle_data_post);
 
 
+        // Insert User In Database
+        $user_inserted = insertUser($user);
+
+
 
         // response to user
         // get reply from post (database)
@@ -118,6 +134,10 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
         {
             $message_reply = $reply["response_message"];
         }
+
+
+
+
         // Sending Image
         /* $url = "https://graph.facebook.com/v4.0/me/messages?access_token=$accessToken";
          $reply = getResponseType($post_id,$comment->__getUser_Id());
@@ -148,3 +168,12 @@ if (isset($_GET['hub_mode']) && isset($_GET['hub_challenge']) && isset($_GET['hu
 
 }
 http_response_code(200);
+
+// Submitting The Post To The Facebook
+
+/*if(isset($_POST["post_facebook"]))
+{
+    // Posting On Facebook Page
+    postFacebook($app_public,$app_secret,$accessToken,$_POST["textPost"]);
+
+}*/

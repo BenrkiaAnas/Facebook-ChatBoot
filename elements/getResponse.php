@@ -1,5 +1,6 @@
 <?php
 
+require_once("./include/db.php");
 
 function getResponse($post_id)
 {

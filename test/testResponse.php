@@ -1,6 +1,6 @@
 <?php
-require_once("../include/db.php");
-require_once("../elements/getResponse.php");
+//require_once("../include/db.php");
+//require_once("../elements/getResponse.php");
 
 // Get Response Image
 

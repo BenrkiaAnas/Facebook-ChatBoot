@@ -1,5 +1,6 @@
 <?php
-//require_once("./class/Post.php");
+require_once("./class/Post.php");
+require_once("./include/db.php");
 
 function getPosts($post_id,$accessToken)
 {

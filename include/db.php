@@ -1,8 +1,8 @@
 <?php
 define("HOST","localhost");
-define("USERNAME","root");
-define("PASSWORD","");
-define("DB","spyzie_back");
+define("USERNAME","spyzie_userpro");
+define("PASSWORD","0102030405$");
+define("DB","spyzie_dbprod");
 
 
 $connection = mysqli_connect(HOST,USERNAME,PASSWORD,DB);

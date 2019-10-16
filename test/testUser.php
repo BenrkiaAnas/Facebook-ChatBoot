@@ -1,7 +1,7 @@
 <?php
-require_once("../include/db.php");
-require_once("../class/User.php");
-require_once("../elements/getUsers.php");
+//require_once("../include/db.php");
+//require_once("../class/User.php");
+//require_once("../elements/getUsers.php");
 
 // Testing Find AllUser()
 

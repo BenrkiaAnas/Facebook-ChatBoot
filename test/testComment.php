@@ -4,14 +4,14 @@ require_once("../class/Comment.php");
 require_once("../elements/getComment.php");
 
 // Testing Find AllUser()
-
+/*
 $all_comment = mysqli_fetch_assoc(findAllComment());
 print_r($all_comment);
-
+*/
 echo "<br>";
 // Testing Find One User
 
-$comment_one = mysqli_fetch_assoc(findByCommentIdId('118189982901150_133578651362283'));
+$comment_one = mysqli_fetch_assoc(findByCommentIdId('118189982901150_137052911014857 '));
 print_r($comment_one);
 
 // Insert Comment

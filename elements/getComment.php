@@ -1,6 +1,6 @@
 <?php
-//require_once("./class/Comment.php");
-//require_once("./include/db.php");
+require_once("./class/Comment.php");
+require_once("./include/db.php");
 
 function getComments($comment_id,$accessToken)
 {

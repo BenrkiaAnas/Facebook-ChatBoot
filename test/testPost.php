@@ -1,7 +1,7 @@
 <?php
-require_once("../include/db.php");
-require_once("../class/Post.php");
-require_once("../elements/getPost.php");
+//require_once("../include/db.php");
+//require_once("../class/Post.php");
+//require_once("../elements/getPost.php");
 
 // Testing Find AllPost()
 

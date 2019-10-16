@@ -1,6 +1,6 @@
 <?php
-//require_once("./class/User.php");
-//require_once("./include/db.php");
+require_once("./class/User.php");
+require_once("./include/db.php");
 
 
 function getUsers($user_id,$accessToken)
@@ -53,7 +53,7 @@ function findAllUsers()
 function findByUserId($id)
 {
     global $connection;
-    $query = "SELECT * FROM users WHERE user_id = $id ";
+    $query = "SELECT * FROM users WHERE user_id = '{$id}' ";
     $query_con = mysqli_query($connection,$query);
     if(!$query_con)
     {
