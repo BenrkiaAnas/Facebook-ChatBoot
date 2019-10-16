@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3fdd15d-461d-4e31-b622-174a0054435a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/autopost.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/post_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/posts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/posting_facebook.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/spyzie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/spyzie.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.php" beforeDir="false" afterPath="$PROJECT_DIR$/bot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elements/getComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/elements/getComment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elements/getPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/elements/getPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elements/getResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/elements/getResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elements/getUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/elements/getUsers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testComment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testUser.php" afterDir="false" />
-    </list>
+    <list default="true" id="f3fdd15d-461d-4e31-b622-174a0054435a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +52,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
+            <state relative-caret-position="82">
               <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/include/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -148,27 +138,7 @@
             <path>
               <item name="spyzie" type="b2602c69:ProjectViewProjectNode" />
               <item name="spyzie" type="462c0819:PsiDirectoryNode" />
-              <item name="class" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spyzie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spyzie" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spyzie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spyzie" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spyzie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spyzie" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spyzie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spyzie" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -180,7 +150,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Projet Php/spyzie_back" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -254,16 +224,18 @@
       <workItem from="1570732576158" duration="94000" />
       <workItem from="1571134597654" duration="12003000" />
       <workItem from="1571164594896" duration="83000" />
+      <workItem from="1571221586987" duration="2640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90082000" />
+    <option name="totallyTimeSpent" value="92722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.408472" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41452345" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -368,13 +340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/class/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -461,8 +426,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
+        <state relative-caret-position="82">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="30" />
         </state>
       </provider>
     </entry>
